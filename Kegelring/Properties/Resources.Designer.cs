@@ -73,19 +73,9 @@ namespace Kegelring.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap back {
+        internal static System.Drawing.Bitmap keglya {
             get {
-                object obj = ResourceManager.GetObject("back", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap zz {
-            get {
-                object obj = ResourceManager.GetObject("zz", resourceCulture);
+                object obj = ResourceManager.GetObject("keglya", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

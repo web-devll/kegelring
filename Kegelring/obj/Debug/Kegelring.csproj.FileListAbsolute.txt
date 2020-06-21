@@ -1,0 +1,13 @@
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\bin\Debug\Kegelring.exe.config
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\bin\Debug\Kegelring.exe
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\bin\Debug\Kegelring.pdb
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Debug\Kegelring.csprojAssemblyReference.cache
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Debug\Kegelring.Start.resources
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Debug\Kegelring.Tactics.resources
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Debug\Kegelring.Сustomization.resources
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Debug\Kegelring.Game.resources
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Debug\Kegelring.Properties.Resources.resources
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Debug\Kegelring.csproj.GenerateResource.cache
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Debug\Kegelring.csproj.CoreCompileInputs.cache
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Debug\Kegelring.exe
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Debug\Kegelring.pdb
