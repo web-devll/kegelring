@@ -75,7 +75,6 @@ namespace Kegelring
                 robot.FillRectangle(black_brush, 44, 35, 16, 25);
             }
             robot.FillRectangle(robot_brush, 10, 10, 40, 40);
-                //robot.FillRectangle(new SolidBrush(Color.Yellow), 0, 0, 50,50);
             Robot.Image = rbmp;
         }
 
@@ -91,11 +90,21 @@ namespace Kegelring
             F1.Show();
         }
 
-            static int m = 2;
-            static int s = 0;
+        static int m = 2;
+        static int s = 0;
+        static string sec;
+    
         private void стартToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Robot.Location = new Point(320, 331);
+            K1.Location = new Point(330, 146);
+            K2.Location = new Point(467, 208);
+            K3.Location = new Point(527, 341);
+            K4.Location = new Point(467, 487);
+            K5.Location = new Point(330, 543);
+            K6.Location = new Point(193, 487);
+            K7.Location = new Point(133, 341);
+            K8.Location = new Point(193, 208);
             m = 2;
             s = 0;
             timer.Enabled = true;
@@ -112,7 +121,11 @@ namespace Kegelring
                     s = 60;
                 }
                 s--;
-                time.Text = m.ToString() + ":" + s.ToString();
+                if (s < 10)
+                    sec = "0" + s.ToString();
+                else
+                    sec = s.ToString();
+                time.Text = m.ToString() + ":" + sec;
                 if(m == 0 && s == 0)
                 {
                     timer.Enabled = false;
@@ -124,6 +137,11 @@ namespace Kegelring
 
         static int X;
         static int Y;
+        static int XR;
+        static int XBR;
+        static int YBR;
+        static int YB;
+        static int speed = 5;
         private void rtimer_Tick(object sender, EventArgs e)
         {
             X = Robot.Location.X;
@@ -131,12 +149,11 @@ namespace Kegelring
             if(X > 500)
                 X = 101;
             else if(X > 100 && X < 501)
-                X++;
+                //X += speed;
             if (X > 500)
                 Y = 101;
             else if (Y > 100 && Y < 501)
-                Y++;
-
+                Y -= speed;
             Robot.Location = new Point(X, Y);
         }
 
@@ -144,8 +161,132 @@ namespace Kegelring
         {
             MessageBox.Show(Robot.Location.ToString());
         }
+
+        private void Game_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                стартToolStripMenuItem_Click(стартToolStripMenuItem, null);
+            }
+            if (e.KeyCode == Keys.Up)
+            {
+                //speed++;
+                Robot.Location = new Point(Robot.Location.X, Robot.Location.Y - speed);
+            }
+            if (e.KeyCode == Keys.Down)
+            {
+                Robot.Location = new Point(Robot.Location.X, Robot.Location.Y + speed);
+                //speed--;
+            }
+            if (e.KeyCode == Keys.Left)
+            {
+                Robot.Location = new Point(Robot.Location.X - speed, Robot.Location.Y);
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                Robot.Location = new Point(Robot.Location.X + speed, Robot.Location.Y);
+            }
+            if (e.KeyCode == Keys.Space)
+            {
+                timer.Enabled = false;
+                rtimer.Enabled = false;
+                MessageBox.Show(Robot.Location.X.ToString() + "; " + Robot.Location.Y.ToString() + "\n" + in3.ToString());
+                //MessageBox.Show($"Робот: {X} ; {Y}\n" +
+                //                $"Кегля: {K4.Location.X.ToString()} ; {K4.Location.Y.ToString()}");
+            }
+        }
+
+        static int x1, x2, x3, x4, x5, x6, x7, x8, y1, y2, y3, y4, y5, y6, y7, y8;
+
+        private void K8_Move(object sender, EventArgs e)
+        {
+            if (K8.Location.X > 220 && K8.Location.Y > 260)
+                in8 = true;
+            else
+                in8 = false;
+        }
+
+        private void K7_Move(object sender, EventArgs e)
+        {
+            if (K7.Location.X < 94)
+                in7 = true;
+            else
+                in7 = false;
+        }
+
+        private void K6_Move(object sender, EventArgs e)
+        {
+            if (K6.Location.X < 250 && K6.Location.Y > 475)
+                in6 = true;
+            else
+                in6 = false;
+        }
+
+        private void K5_Move(object sender, EventArgs e)
+        {
+            if (K5.Location.Y > 620)
+                in5 = true;
+            else
+                in5 = false;
+        }
+
+        private void K4_Move(object sender, EventArgs e)
+        {
+            if (K4.Location.X > 450 && K4.Location.Y > 470 && K4.Location.X < 550 && K4.Location.Y < 570)
+                in4 = true;
+            else
+                in4 = false;
+        }
+
+        private void K3_Move(object sender, EventArgs e)
+        {
+            if (K3.Location.X < 500 && K3.Location.X > 400 && K3.Location.Y > 200 && K3.Location.Y < 300)
+                in3 = true;
+            else
+                in3 = false;
+        }
+
+        private void K2_Move(object sender, EventArgs e)
+        {
+            if (K2.Location.X > 455 && K2.Location.Y < 260)
+                in2 = true;
+            else
+                in2 = false;
+        }
+
+        private void K1_Move(object sender, EventArgs e)
+        {
+            if (K1.Location.Y > 45 && K1.Location.Y < 165 && K1.Location.X > 300 && K1.Location.X < 400)
+                in1 = true;
+            else
+                in1 = false;
+        }
+
+        static bool in1 = true, in2 = true, in3 = true, in4 = true, in5 = true, in6 = true, in7 = true, in8 = true;
+        private void Robot_Move(object sender, EventArgs e)
+        {
+            X = Robot.Location.X;
+            Y = Robot.Location.Y;
+            XR = Y + 60;
+            YB = Y + 60;
+            XBR = X + 60;
+            YBR = Y + 60;
+            if (in1 == true && Y < 185)
+            {
+                K1.Location = new Point(K1.Location.X, K1.Location.Y - speed);
+            }
+            if (in3 == true && X < 560)
+            {
+                K2.Location = new Point(K2.Location.X + speed, K2.Location.Y);
+            }
+            if (in4 == true && XBR > 467 && YBR > 487)
+            {
+                K4.Location = new Point(K4.Location.X + speed, K4.Location.Y + speed);
+            }
+        }
     }
 }
 //Обнаружение краёв поля и возвращение обратно
 //Обнаружение кеглей В КРУГЕ
 //выталкивание их, что бы они были на 1 слое
+

@@ -49,7 +49,6 @@ namespace Kegelring
             this.K2 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.K1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Robot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.K8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.K7)).BeginInit();
@@ -58,6 +57,7 @@ namespace Kegelring
             ((System.ComponentModel.ISupportInitialize)(this.K4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.K3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.K2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Robot)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -92,6 +92,7 @@ namespace Kegelring
             // 
             // timer
             // 
+            this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // time
@@ -121,6 +122,7 @@ namespace Kegelring
             this.K1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.K1.TabIndex = 6;
             this.K1.TabStop = false;
+            this.K1.Move += new System.EventHandler(this.K1_Move);
             // 
             // Robot
             // 
@@ -130,6 +132,7 @@ namespace Kegelring
             this.Robot.Size = new System.Drawing.Size(60, 60);
             this.Robot.TabIndex = 3;
             this.Robot.TabStop = false;
+            this.Robot.Move += new System.EventHandler(this.Robot_Move);
             // 
             // Picture
             // 
@@ -154,6 +157,7 @@ namespace Kegelring
             this.K8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.K8.TabIndex = 8;
             this.K8.TabStop = false;
+            this.K8.Move += new System.EventHandler(this.K8_Move);
             // 
             // K7
             // 
@@ -166,6 +170,7 @@ namespace Kegelring
             this.K7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.K7.TabIndex = 9;
             this.K7.TabStop = false;
+            this.K7.Move += new System.EventHandler(this.K7_Move);
             // 
             // K6
             // 
@@ -178,6 +183,7 @@ namespace Kegelring
             this.K6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.K6.TabIndex = 10;
             this.K6.TabStop = false;
+            this.K6.Move += new System.EventHandler(this.K6_Move);
             // 
             // K5
             // 
@@ -190,6 +196,7 @@ namespace Kegelring
             this.K5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.K5.TabIndex = 11;
             this.K5.TabStop = false;
+            this.K5.Move += new System.EventHandler(this.K5_Move);
             // 
             // K4
             // 
@@ -202,6 +209,7 @@ namespace Kegelring
             this.K4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.K4.TabIndex = 12;
             this.K4.TabStop = false;
+            this.K4.Move += new System.EventHandler(this.K4_Move);
             // 
             // K3
             // 
@@ -214,6 +222,7 @@ namespace Kegelring
             this.K3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.K3.TabIndex = 13;
             this.K3.TabStop = false;
+            this.K3.Move += new System.EventHandler(this.K3_Move);
             // 
             // K2
             // 
@@ -226,6 +235,7 @@ namespace Kegelring
             this.K2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.K2.TabIndex = 14;
             this.K2.TabStop = false;
+            this.K2.Move += new System.EventHandler(this.K2_Move);
             // 
             // Game
             // 
@@ -249,9 +259,10 @@ namespace Kegelring
             this.MaximizeBox = false;
             this.Name = "Game";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Игра";
+            this.Text = "Kegelring";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form4_FormClosed);
             this.Load += new System.EventHandler(this.Form4_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.K1)).EndInit();
