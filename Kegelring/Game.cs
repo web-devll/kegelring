@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -107,6 +102,7 @@ namespace Kegelring
             K8.Location = new Point(193, 208);
             m = 2;
             s = 0;
+            gocenter = false;
             timer.Enabled = true;
             rtimer.Enabled = true;
         }
@@ -115,7 +111,13 @@ namespace Kegelring
         {
             await Task.Run(() =>
             {
-                if(s == 0)
+                if (in8 == false & in1 == false & in2 == false & in3 == false & in4 == false & in5 == false & in6 == false & in7 == false)
+                {
+                    timer.Enabled = false;
+                    rtimer.Enabled = false;
+                    MessageBox.Show($"Поздравляю, твой робот вытолкнул все кегли, твоё время 0:{60 - Convert.ToDouble(sec)}", "Игра окончена");
+                }
+                if (s == 0)
                 {
                     m--;
                     s = 60;
@@ -130,7 +132,7 @@ namespace Kegelring
                 {
                     timer.Enabled = false;
                     rtimer.Enabled = false;
-                    MessageBox.Show("Игра окончена", "Врёмя вышло");
+                    MessageBox.Show("К сожалению время кончилось, попобуй заново", "Врёмя вышло");
                 }
             });
         }
@@ -139,19 +141,64 @@ namespace Kegelring
         static int Y;
         static int XR;
         static int YB;
-        static int speed = 5;
+        static int speed = 2;
+        static bool gocenter = false;
         private void rtimer_Tick(object sender, EventArgs e)
         {
+            //                         Point(320, 331);
             X = Robot.Location.X;
             Y = Robot.Location.Y;
-            if(X > 500)
-                X = 101;
-            else if(X > 100 && X < 501)
-                //X += speed;
-            if (X > 500)
-                Y = 101;
-            else if (Y > 100 && Y < 501)
+            XR = X + 60;
+            YB = Y + 60;
+            if (Y < 334 & Y > 326 & X > 317 & X < 323)
+                gocenter = false;
+            if (gocenter == true)
+            {
+                if (X < 317)
+                    X += speed;
+                if (X > 323)
+                    X -= speed;
+                if (Y < 327)
+                    Y += speed;
+                if (Y > 333)
+                    Y -= speed;
+            }
+            if (in1 == true & gocenter == false & Y > 85)
+            {
                 Y -= speed;
+            }
+            if(in1 == false & in2 == true & gocenter == false)
+            {
+                X += speed;
+                Y -= speed;
+            }
+            if (in2 == false & in3 == true & gocenter == false)
+            {
+                X += speed;
+            }
+            if (in3 == false & in4 == true & gocenter == false)
+            {
+                X += speed;
+                Y += speed;
+            }
+            if (in4 == false & in5 == true & gocenter == false)
+            {
+                Y += speed;
+            }
+            if (in5 == false & in6 == true & gocenter == false)
+            {
+                X -= speed;
+                Y += speed;
+            }
+            if (in6 == false & in7 == true & gocenter == false)
+            {
+                X -= speed;
+            }
+            if (in7 == false & in8 == true & gocenter == false)
+            {
+                X -= speed;
+                Y -= speed;
+            }                    
             Robot.Location = new Point(X, Y);
         }
 
@@ -166,32 +213,10 @@ namespace Kegelring
             {
                 стартToolStripMenuItem_Click(стартToolStripMenuItem, null);
             }
-            if (e.KeyCode == Keys.Up)
-            {
-                //speed++;
-                Robot.Location = new Point(Robot.Location.X, Robot.Location.Y - speed);
-            }
-            if (e.KeyCode == Keys.Down)
-            {
-                Robot.Location = new Point(Robot.Location.X, Robot.Location.Y + speed);
-                //speed--;
-            }
-            if (e.KeyCode == Keys.Left)
-            {
-                Robot.Location = new Point(Robot.Location.X - speed, Robot.Location.Y);
-            }
-            if (e.KeyCode == Keys.Right)
-            {
-                Robot.Location = new Point(Robot.Location.X + speed, Robot.Location.Y);
-            }
             if (e.KeyCode == Keys.Space)
             {
-                timer.Enabled = false;
-                rtimer.Enabled = false;
                 Clipboard.SetText(Robot.Location.X.ToString() + ", " + Robot.Location.Y.ToString());
-                MessageBox.Show(Robot.Location.X.ToString() + "; " + Robot.Location.Y.ToString() + "\n" + in8);
-                //MessageBox.Show($"Робот: {X} ; {Y}\n" +
-                //                $"Кегля: {K4.Location.X.ToString()} ; {K4.Location.Y.ToString()}");
+                MessageBox.Show(Robot.Location.ToString());
             }
         }
 
@@ -201,7 +226,10 @@ namespace Kegelring
             if (K8.Location.X < 255 && K8.Location.Y < 265 && K8.Location.X > 110 && K8.Location.Y > 110)
                 in8 = true;
             else
+            {
                 in8 = false;
+                gocenter = true;
+            }
         }
 
         private void K7_Move(object sender, EventArgs e)
@@ -209,7 +237,10 @@ namespace Kegelring
             if (K7.Location.X < 195 && K7.Location.Y < 400 && K7.Location.X > 40 && K7.Location.Y > 320)
                 in7 = true;
             else
+            {
                 in7 = false;
+                gocenter = true;
+            }
         }
 
         private void K6_Move(object sender, EventArgs e)
@@ -217,7 +248,10 @@ namespace Kegelring
             if (K6.Location.X < 255 && K6.Location.X > 100 && K6.Location.Y > 465 && K6.Location.Y < 565)
                 in6 = true;
             else
+            {
                 in6 = false;
+                gocenter = true;
+            }
         }
 
         private void K5_Move(object sender, EventArgs e)
@@ -225,7 +259,10 @@ namespace Kegelring
             if (K5.Location.Y > 530 && K5.Location.Y < 630 && K5.Location.X > 315 && K5.Location.X < 415)
                 in5 = true;
             else
+            {
                 in5 = false;
+                gocenter = true;
+            }
         }
 
         private void K4_Move(object sender, EventArgs e)
@@ -233,7 +270,10 @@ namespace Kegelring
             if (K4.Location.X > 450 && K4.Location.Y > 470 && K4.Location.X < 550 && K4.Location.Y < 570)
                 in4 = true;
             else
+            {
                 in4 = false;
+                gocenter = true;
+            }
         }
 
         private void K3_Move(object sender, EventArgs e)
@@ -241,7 +281,10 @@ namespace Kegelring
             if (K3.Location.X > 520 && K3.Location.X < 620 && K3.Location.Y > 300 && K3.Location.Y < 400)
                 in3 = true;
             else
+            {
                 in3 = false;
+                gocenter = true;
+            }
         }
 
         private void K2_Move(object sender, EventArgs e)
@@ -249,7 +292,10 @@ namespace Kegelring
             if (K2.Location.X > 450 && K2.Location.X < 550 && K2.Location.Y < 220 && K2.Location.Y > 120)
                 in2 = true;
             else
+            {
                 in2 = false;
+                gocenter = true;
+            }
         }
 
         private void K1_Move(object sender, EventArgs e)
@@ -257,26 +303,25 @@ namespace Kegelring
             if (K1.Location.Y > 55 && K1.Location.Y < 165 && K1.Location.X > 300 && K1.Location.X < 400)
                 in1 = true;
             else
+            {
                 in1 = false;
+                gocenter = true;
+            }
         }
 
-        static bool in1 = true, in2 = true, in3 = true, in4 = true, in5 = true, in6 = true, in7 = true, in8 = true, center = true;
+        static bool in1 = true, in2 = true, in3 = true, in4 = true, in5 = true, in6 = true, in7 = true, in8 = true;
         private void Robot_Move(object sender, EventArgs e)
         {
             X = Robot.Location.X;
             Y = Robot.Location.Y;
             XR = X + 60;
             YB = Y + 60;
-            if (X == 320 && Y == 331)
-                center = true;
-            else
-                center = false;
 
             if (in1 == true && Y < 180 && X > 260 && X < 380)
             {
                 K1.Location = new Point(K1.Location.X, K1.Location.Y - speed);
             }
-            if (in2 == true && XR > 470 && Y < 245)
+            if (in2 == true && XR > 467 && Y < 245)
             {
                 K2.Location = new Point(K2.Location.X + speed, K2.Location.Y - speed);
             }
@@ -284,7 +329,7 @@ namespace Kegelring
             {
                 K3.Location = new Point(K3.Location.X + speed, K3.Location.Y);
             }
-            if (in4 == true && XR > 467 && YB > 487)
+            if (in4 == true && XR > 467 && YB > 485)
             {
                 K4.Location = new Point(K4.Location.X + speed, K4.Location.Y + speed);
             }
@@ -307,7 +352,3 @@ namespace Kegelring
         }
     }
 }
-//Обнаружение краёв поля и возвращение обратно
-//Обнаружение кеглей В КРУГЕ
-//выталкивание их, что бы они были на 1 слое
-
