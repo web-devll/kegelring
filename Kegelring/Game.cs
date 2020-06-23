@@ -138,8 +138,6 @@ namespace Kegelring
         static int X;
         static int Y;
         static int XR;
-        static int XBR;
-        static int YBR;
         static int YB;
         static int speed = 5;
         private void rtimer_Tick(object sender, EventArgs e)
@@ -190,7 +188,8 @@ namespace Kegelring
             {
                 timer.Enabled = false;
                 rtimer.Enabled = false;
-                MessageBox.Show(Robot.Location.X.ToString() + "; " + Robot.Location.Y.ToString() + "\n" + in3.ToString());
+                Clipboard.SetText(Robot.Location.X.ToString() + ", " + Robot.Location.Y.ToString());
+                MessageBox.Show(Robot.Location.X.ToString() + "; " + Robot.Location.Y.ToString() + "\n" + in2);
                 //MessageBox.Show($"Робот: {X} ; {Y}\n" +
                 //                $"Кегля: {K4.Location.X.ToString()} ; {K4.Location.Y.ToString()}");
             }
@@ -240,7 +239,7 @@ namespace Kegelring
 
         private void K3_Move(object sender, EventArgs e)
         {
-            if (K3.Location.X < 500 && K3.Location.X > 400 && K3.Location.Y > 200 && K3.Location.Y < 300)
+            if (K3.Location.X > 520 && K3.Location.X < 620 && K3.Location.Y > 300 && K3.Location.Y < 400)
                 in3 = true;
             else
                 in3 = false;
@@ -248,7 +247,7 @@ namespace Kegelring
 
         private void K2_Move(object sender, EventArgs e)
         {
-            if (K2.Location.X > 455 && K2.Location.Y < 260)
+            if (K2.Location.X > 450 && K2.Location.X < 550 && K2.Location.Y < 220 && K2.Location.Y > 120)
                 in2 = true;
             else
                 in2 = false;
@@ -256,7 +255,7 @@ namespace Kegelring
 
         private void K1_Move(object sender, EventArgs e)
         {
-            if (K1.Location.Y > 45 && K1.Location.Y < 165 && K1.Location.X > 300 && K1.Location.X < 400)
+            if (K1.Location.Y > 65 && K1.Location.Y < 165 && K1.Location.X > 300 && K1.Location.X < 400)
                 in1 = true;
             else
                 in1 = false;
@@ -267,19 +266,21 @@ namespace Kegelring
         {
             X = Robot.Location.X;
             Y = Robot.Location.Y;
-            XR = Y + 60;
+            XR = X + 60;
             YB = Y + 60;
-            XBR = X + 60;
-            YBR = Y + 60;
-            if (in1 == true && Y < 185)
+            if (in1 == true && Y < 180 && X > 260 && X < 380)
             {
                 K1.Location = new Point(K1.Location.X, K1.Location.Y - speed);
             }
-            if (in3 == true && X < 560)
+            if (in2 == true && XR > 470 && Y < 245)
             {
-                K2.Location = new Point(K2.Location.X + speed, K2.Location.Y);
+                K2.Location = new Point(K2.Location.X + speed, K2.Location.Y - speed);
             }
-            if (in4 == true && XBR > 467 && YBR > 487)
+            if (in3 == true && XR > 530 && YB > 335 && Y < 380)
+            {
+                K3.Location = new Point(K3.Location.X + speed, K3.Location.Y);
+            }
+            if (in4 == true && XR > 467 && YB > 487)
             {
                 K4.Location = new Point(K4.Location.X + speed, K4.Location.Y + speed);
             }

@@ -23,4 +23,3 @@ D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Release\Kegelring.csproj.Gen
 D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Release\Kegelring.csproj.CoreCompileInputs.cache
 D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Release\Kegelring.exe
 D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Release\Kegelring.pdb
-D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Release\Kegelring.csprojAssemblyReference.cache

@@ -111,18 +111,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cc.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\zz.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\keglya.png" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <SplashScreen Include="Resources\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
