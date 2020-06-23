@@ -11,8 +11,8 @@ D:\Учеба\Stud\ТРПО\Отчёты\Kegelring\Kegelring\obj\Release\Kegelri
 D:\Учеба\Stud\ТРПО\Отчёты\Kegelring\Kegelring\obj\Release\Kegelring.Tactics.resources
 D:\Учеба\Stud\ТРПО\Отчёты\Kegelring\Kegelring\obj\Release\Kegelring.Сustomization.resources
 D:\Учеба\Stud\ТРПО\Отчёты\Kegelring\Kegelring\obj\Release\Kegelring.Game.resources
-D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\bin\Release\Kegelring.exe.config
 D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\bin\Release\Kegelring.exe
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\bin\Release\Kegelring.exe.config
 D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\bin\Release\Kegelring.pdb
 D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Release\Kegelring.Start.resources
 D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Release\Kegelring.Tactics.resources
@@ -23,3 +23,4 @@ D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Release\Kegelring.csproj.Gen
 D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Release\Kegelring.csproj.CoreCompileInputs.cache
 D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Release\Kegelring.exe
 D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Release\Kegelring.pdb
+D:\Учеба\Stud\ТРПО\Kegelring\Kegelring\obj\Release\Kegelring.csprojAssemblyReference.cache

@@ -189,17 +189,16 @@ namespace Kegelring
                 timer.Enabled = false;
                 rtimer.Enabled = false;
                 Clipboard.SetText(Robot.Location.X.ToString() + ", " + Robot.Location.Y.ToString());
-                MessageBox.Show(Robot.Location.X.ToString() + "; " + Robot.Location.Y.ToString() + "\n" + in2);
+                MessageBox.Show(Robot.Location.X.ToString() + "; " + Robot.Location.Y.ToString() + "\n" + in8);
                 //MessageBox.Show($"Робот: {X} ; {Y}\n" +
                 //                $"Кегля: {K4.Location.X.ToString()} ; {K4.Location.Y.ToString()}");
             }
         }
 
-        static int x1, x2, x3, x4, x5, x6, x7, x8, y1, y2, y3, y4, y5, y6, y7, y8;
 
         private void K8_Move(object sender, EventArgs e)
         {
-            if (K8.Location.X > 220 && K8.Location.Y > 260)
+            if (K8.Location.X < 255 && K8.Location.Y < 265 && K8.Location.X > 110 && K8.Location.Y > 110)
                 in8 = true;
             else
                 in8 = false;
@@ -207,7 +206,7 @@ namespace Kegelring
 
         private void K7_Move(object sender, EventArgs e)
         {
-            if (K7.Location.X < 94)
+            if (K7.Location.X < 195 && K7.Location.Y < 400 && K7.Location.X > 40 && K7.Location.Y > 320)
                 in7 = true;
             else
                 in7 = false;
@@ -215,7 +214,7 @@ namespace Kegelring
 
         private void K6_Move(object sender, EventArgs e)
         {
-            if (K6.Location.X < 250 && K6.Location.Y > 475)
+            if (K6.Location.X < 255 && K6.Location.X > 100 && K6.Location.Y > 465 && K6.Location.Y < 565)
                 in6 = true;
             else
                 in6 = false;
@@ -223,7 +222,7 @@ namespace Kegelring
 
         private void K5_Move(object sender, EventArgs e)
         {
-            if (K5.Location.Y > 620)
+            if (K5.Location.Y > 530 && K5.Location.Y < 630 && K5.Location.X > 315 && K5.Location.X < 415)
                 in5 = true;
             else
                 in5 = false;
@@ -255,19 +254,24 @@ namespace Kegelring
 
         private void K1_Move(object sender, EventArgs e)
         {
-            if (K1.Location.Y > 65 && K1.Location.Y < 165 && K1.Location.X > 300 && K1.Location.X < 400)
+            if (K1.Location.Y > 55 && K1.Location.Y < 165 && K1.Location.X > 300 && K1.Location.X < 400)
                 in1 = true;
             else
                 in1 = false;
         }
 
-        static bool in1 = true, in2 = true, in3 = true, in4 = true, in5 = true, in6 = true, in7 = true, in8 = true;
+        static bool in1 = true, in2 = true, in3 = true, in4 = true, in5 = true, in6 = true, in7 = true, in8 = true, center = true;
         private void Robot_Move(object sender, EventArgs e)
         {
             X = Robot.Location.X;
             Y = Robot.Location.Y;
             XR = X + 60;
             YB = Y + 60;
+            if (X == 320 && Y == 331)
+                center = true;
+            else
+                center = false;
+
             if (in1 == true && Y < 180 && X > 260 && X < 380)
             {
                 K1.Location = new Point(K1.Location.X, K1.Location.Y - speed);
@@ -283,6 +287,22 @@ namespace Kegelring
             if (in4 == true && XR > 467 && YB > 487)
             {
                 K4.Location = new Point(K4.Location.X + speed, K4.Location.Y + speed);
+            }
+            if (in5 == true && XR > 330 && X < 370 && YB > 550)
+            {
+                K5.Location = new Point(K5.Location.X, K5.Location.Y + speed);
+            }
+            if (in6 == true && X < 230 && YB > 492)
+            {
+                K6.Location = new Point(K6.Location.X - speed, K6.Location.Y + speed);
+            }
+            if (in7 == true && X < 170 && Y < 380 && Y > 285)
+            {
+                K7.Location = new Point(K7.Location.X - speed, K7.Location.Y);
+            }
+            if (in8 == true && X < 235 && Y < 245)
+            {
+                K8.Location = new Point(K8.Location.X - speed, K8.Location.Y - speed);
             }
         }
     }
