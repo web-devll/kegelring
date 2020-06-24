@@ -49,6 +49,7 @@ namespace Kegelring
             this.K2 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.K1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Robot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.K8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.K7)).BeginInit();
@@ -57,7 +58,6 @@ namespace Kegelring
             ((System.ComponentModel.ISupportInitialize)(this.K4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.K3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.K2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Robot)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1

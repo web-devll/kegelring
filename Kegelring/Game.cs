@@ -11,6 +11,7 @@ namespace Kegelring
         static byte tactic = 1;
         static byte wheels = 1;
         static Color RobotColor = Color.Red;
+
         public Game() : this(1)
         {
             InitializeComponent();
@@ -54,6 +55,7 @@ namespace Kegelring
                 robot.FillRectangle(black_brush, 0, 45, 10, 15);
                 robot.FillRectangle(black_brush, 50, 0, 10, 15);
                 robot.FillRectangle(black_brush, 50, 45, 10, 15);
+                speed = 1;
             }
             else if(wheels == 2)
             {
@@ -61,6 +63,7 @@ namespace Kegelring
                 robot.FillRectangle(black_brush, 0, 40, 13, 20);
                 robot.FillRectangle(black_brush, 47, 0, 13, 20);
                 robot.FillRectangle(black_brush, 47, 40, 13, 20);
+                speed = 2;
             }
             else
             {
@@ -68,6 +71,7 @@ namespace Kegelring
                 robot.FillRectangle(black_brush, 0, 35, 16, 25);
                 robot.FillRectangle(black_brush, 44, 0, 16, 25);
                 robot.FillRectangle(black_brush, 44, 35, 16, 25);
+                speed = 3;
             }
             robot.FillRectangle(robot_brush, 10, 10, 40, 40);
             Robot.Image = rbmp;
@@ -82,6 +86,7 @@ namespace Kegelring
         {
             Hide();
             Start F1 = new Start();
+            стартToolStripMenuItem_Click(стартToolStripMenuItem, null);
             F1.Show();
         }
 
@@ -91,6 +96,15 @@ namespace Kegelring
     
         private void стартToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            in1 = true;
+            in2 = true;
+            in3 = true;
+            in4 = true;
+            in5 = true;
+            in6 = true;
+            in7 = true;
+            in8 = true;
+            gocenter = false;
             Robot.Location = new Point(320, 331);
             K1.Location = new Point(330, 146);
             K2.Location = new Point(467, 208);
@@ -102,7 +116,6 @@ namespace Kegelring
             K8.Location = new Point(193, 208);
             m = 2;
             s = 0;
-            gocenter = false;
             timer.Enabled = true;
             rtimer.Enabled = true;
         }
@@ -145,18 +158,17 @@ namespace Kegelring
         static bool gocenter = false;
         private void rtimer_Tick(object sender, EventArgs e)
         {
-            //                         Point(320, 331);
             X = Robot.Location.X;
             Y = Robot.Location.Y;
             XR = X + 60;
             YB = Y + 60;
-            if (Y < 334 & Y > 326 & X > 317 & X < 323)
+            if (Y < 334 & Y > 326 & X > 315 & X < 323)
                 gocenter = false;
             if (gocenter == true)
             {
-                if (X < 317)
+                if (X < 316)
                     X += speed;
-                if (X > 323)
+                if (X > 322)
                     X -= speed;
                 if (Y < 327)
                     Y += speed;
@@ -212,11 +224,6 @@ namespace Kegelring
             if (e.KeyCode == Keys.Enter)
             {
                 стартToolStripMenuItem_Click(стартToolStripMenuItem, null);
-            }
-            if (e.KeyCode == Keys.Space)
-            {
-                Clipboard.SetText(Robot.Location.X.ToString() + ", " + Robot.Location.Y.ToString());
-                MessageBox.Show(Robot.Location.ToString());
             }
         }
 
